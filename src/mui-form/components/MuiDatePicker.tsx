@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { TextFieldProps, TextField } from '@mui/material';
-import { DatePicker, DatePickerProps } from '@mui/x-date-pickers';
+import { TextFieldProps } from '@mui/material';
+import { DatePicker, DatePickerProps } from '@mui/x-date-pickers/DatePicker';
 import { parseISO } from 'date-fns';
 import { useCallback } from 'react';
 import {
@@ -44,7 +44,7 @@ type MuiDatePickerProps<
      * API: {@link https://mui.com/x/api/date-pickers/date-picker/}
      */
     datePickerProps: Omit<
-      DatePickerProps<unknown, unknown>,
+      DatePickerProps<Date>,
       'value' | 'onChange' | 'renderInput'
     >;
     /**
@@ -118,18 +118,16 @@ export const MuiDatePicker: <
     <DatePicker
       {...datePickerProps}
       ref={field.ref}
-      value={field.value}
+      value={field.value ? new Date(field.value) : null}
       onChange={onChangeHandler}
-      renderInput={(params) => (
-        <TextField
-          // Attention to ther order of parameters passing
-          {...textFieldProps}
-          {...params}
-          name={field.name}
-          error={!!fieldState.error || fieldState.error}
-          helperText={config?.displayErrorMessage && fieldState.error?.message}
-        />
-      )}
+      slotProps={{
+        textField: {
+          ...textFieldProps,
+          name: field.name,
+          error: !!fieldState.error || fieldState.error,
+          helperText: config?.displayErrorMessage && fieldState.error?.message
+        }
+      }}
     />
   );
 };

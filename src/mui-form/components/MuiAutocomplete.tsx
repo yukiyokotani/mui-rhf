@@ -101,7 +101,7 @@ export const MuiAutocomplete: <
   const { field, fieldState } = useController(others);
 
   return (
-    <Autocomplete<AutocompleteOption>
+    <Autocomplete
       {...autocompleteProps}
       id={autocompleteProps?.id}
       options={autocompleteProps?.options ?? []}

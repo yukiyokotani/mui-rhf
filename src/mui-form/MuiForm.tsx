@@ -5,7 +5,7 @@ import {
   Card,
   CardActions,
   CardContent,
-  Grid,
+  Grid2 as Grid,
   Typography
 } from '@mui/material';
 import { useCallback } from 'react';
@@ -53,7 +53,7 @@ const MaterialForm = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Card>
           <form onSubmit={handleSubmit(onSubmit, onError)}>
             <CardContent>
@@ -64,7 +64,13 @@ const MaterialForm = () => {
                 「送信」ボタンを押すとフォームオブジェクトがconsoleに出力されます。
               </Typography>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6,
+                    lg: 4
+                  }}
+                >
                   <MuiTextField<FormData>
                     name='name'
                     control={control}
@@ -86,7 +92,13 @@ const MaterialForm = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6,
+                    lg: 4
+                  }}
+                >
                   <MuiNumericField<FormData>
                     name='assets'
                     control={control}
@@ -110,7 +122,13 @@ const MaterialForm = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6,
+                    lg: 4
+                  }}
+                >
                   <MuiAutocomplete<FormData>
                     name='film'
                     control={control}
@@ -132,7 +150,13 @@ const MaterialForm = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6,
+                    lg: 4
+                  }}
+                >
                   <MuiDatePicker<FormData, 'birthday'>
                     name='birthday'
                     control={control}
@@ -156,7 +180,13 @@ const MaterialForm = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} md={6} lg={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6,
+                    lg: 4
+                  }}
+                >
                   <MuiSelect<FormData, 'menu'>
                     name='menu'
                     control={control}
@@ -189,10 +219,11 @@ const MaterialForm = () => {
                   />
                 </Grid>
                 <Grid
-                  item
-                  xs={12}
-                  md={6}
-                  lg={4}
+                  size={{
+                    xs: 12,
+                    md: 6,
+                    lg: 4
+                  }}
                   display='flex'
                   alignItems='center'
                 >
